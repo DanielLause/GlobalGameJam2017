@@ -9,7 +9,14 @@ public class CharacterMovementController : MonoBehaviour
 {
     [HideInInspector]
     public bool CanMove = true;
+    [HideInInspector]
+    public bool IsMoving;
+    [HideInInspector]
+    public bool IsJumping;
+    [HideInInspector]
+    public bool IsIdleing;
 
+    public float RotationSpeed = 2;
     public float MaxSpeed = 5f;
     public float Speed = 0.2f;
     public float JumpSpeed = 8;
@@ -40,11 +47,31 @@ public class CharacterMovementController : MonoBehaviour
         else
             velocity.x = Mathf.Lerp(velocity.x, 0, Speed * 3);
 
+        if (Mathf.Abs(velocity.x) >= 0.5f)
+        {
+            IsMoving = true;
+            IsIdleing = false;
+            IsJumping = false;
+        }
+        else
+        {
+            IsMoving = false;
+            IsIdleing = true;
+            IsJumping = false;
+        }
+
         if (controller.isGrounded)
         {
             velocitySpeed = 0;
             if (Input.GetKeyDown(KeyCode.Space) && CanMove)
                 velocitySpeed = JumpSpeed;
+        }
+
+        if (Mathf.Abs(velocitySpeed) >= 1)
+        {
+            IsJumping = true;
+            IsMoving = false;
+            IsIdleing = false;
         }
 
         velocitySpeed -= Gravity * Time.deltaTime;
@@ -56,6 +83,7 @@ public class CharacterMovementController : MonoBehaviour
             controller.Move((new Vector3(velocity.x * InAirMovementMultipliar, velocity.y, velocity.z)) * Time.deltaTime);
 
         FixPosition();
+        ControllRotation();
     }
 
     private void FixPosition()
@@ -63,6 +91,22 @@ public class CharacterMovementController : MonoBehaviour
         Vector3 fixedPos = transform.position;
         fixedPos.z = 0;
         transform.position = fixedPos;
+    }
+
+    private void ControllRotation()
+    {
+        Vector3 currentAngle = transform.eulerAngles;
+
+        if (velocity.x > 0)
+        {
+            currentAngle = new Vector3( 0, Mathf.LerpAngle(currentAngle.y, 180, Time.deltaTime * RotationSpeed), 0);
+            transform.eulerAngles = currentAngle;
+        }
+        else
+        {
+            currentAngle = new Vector3(0, Mathf.LerpAngle(currentAngle.y, 0, Time.deltaTime * RotationSpeed), 0);
+            transform.eulerAngles = currentAngle;
+        }
     }
 
     private bool IsGrounded()
