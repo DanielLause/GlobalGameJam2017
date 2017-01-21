@@ -5,51 +5,47 @@ using UnityEngine.UI;
 
 public class Countdown : UnitySingleton<Countdown> {
 
+    public delegate void CountdownExpired();
+    public event CountdownExpired OnCountDownExpired;
+
     [Header("Reference")]
     public Text CountdownText;
 
+    public bool Paused { get; set; }
+
     private int seconds;
-    public bool sdsd;
+    private Coroutine timer;
 
-    public bool Paused;
-
-    void Start()
-    {
-        StartCountdown(120);
-    }
-
-    void Update()
-    {
-        if (sdsd)
-        {
-            sdsd = false;
-            Paused = true;
-            PauseTimer();
-        }
-    }
     public void StartCountdown(int seconds)
     {
         this.seconds = seconds;
         CountdownText.text = string.Format("{0}:{1:00}", seconds / 60, seconds % 60);
-        StartCoroutine("Timer");
+        timer = StartCoroutine(Timer());
     }
 
-    public void PauseTimer()
+    public void PauseCountdown()
     {
-        StopCoroutine("Timer");
+        StopCoroutine(timer);
+        Paused = true;
+    }
+    
+    public void UnpauseCountdown()
+    {
+        timer = StartCoroutine(Timer());
     }
 
     private IEnumerator Timer()
     {
-        if (!Paused)
-        {
+        Paused = false;
         yield return new WaitForSeconds(1);
         seconds--;
         CountdownText.text = string.Format("{0}:{1:00}", seconds / 60, seconds % 60);
         if (seconds == 0)
-            Debug.Log("EVENT");
-        else
-            StartCoroutine(Timer());
+        {
+            if (OnCountDownExpired != null)
+                OnCountDownExpired();
         }
+        else
+            timer = StartCoroutine(Timer());
     }
 }
