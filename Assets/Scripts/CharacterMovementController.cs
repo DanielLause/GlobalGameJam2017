@@ -9,6 +9,19 @@ public class CharacterMovementController : MonoBehaviour
 {
     private const float MAX_SPEED = 1.5f;
 
+    public bool CanMove
+    {
+        get
+        {
+            return canMove;
+        }
+
+        set
+        {
+            canMove = value;
+        }
+    }
+
     [SerializeField] private float walkSpeed = 1.5f;
     [SerializeField] private float inAirControl = 0.1f;
     [SerializeField] private float jumpHeight = 1.7f;
@@ -28,6 +41,7 @@ public class CharacterMovementController : MonoBehaviour
     private bool CanRunSidestep = true;
     private bool CanJump = true;
     private bool CanRun = true;
+    private bool canMove = true;
 
     private void Awake()
     {
@@ -69,9 +83,9 @@ public class CharacterMovementController : MonoBehaviour
             jumpFlag = true;
 
         Vector3 inputVector = new Vector3();
-        if (Input.GetKey(KeyCode.A) && grounded)
+        if (Input.GetKey(KeyCode.A) && grounded && canMove)
             currentSpeed = Mathf.Lerp(currentSpeed, -MAX_SPEED, Time.deltaTime * walkSpeed);
-        else if (Input.GetKey(KeyCode.D) && grounded)
+        else if (Input.GetKey(KeyCode.D) && grounded && canMove)
             currentSpeed = Mathf.Lerp(currentSpeed, MAX_SPEED, Time.deltaTime * walkSpeed);
         else
             currentSpeed = Mathf.Lerp(currentSpeed, 0, Time.deltaTime * walkSpeed * 3);
