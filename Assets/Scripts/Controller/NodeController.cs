@@ -16,6 +16,7 @@ public class NodeController : MonoBehaviour {
         }
     }
 
+
     private void SetActiveAllObjectsInList(bool enable)
     {
         if (ObjectsToDeactivate == null)

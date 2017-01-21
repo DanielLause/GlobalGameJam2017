@@ -153,7 +153,7 @@ MonoBehaviour:
   CanMove: 1
   MaxSpeed: 5
   Speed: 0.2
-  JumpSpeed: 9
+  JumpSpeed: 6
   InAirMovementMultipliar: 0.8
   Gravity: 15
   PlayerPivitToGroundDistance: 2.5
