@@ -25,6 +25,7 @@ public class Rotation : MonoBehaviour {
         }
     }
 
+
     private void Rotate()
     {
         switch (RotateDirection)
