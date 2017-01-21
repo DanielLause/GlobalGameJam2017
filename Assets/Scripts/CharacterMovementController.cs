@@ -3,25 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
+[RequireComponent(typeof(CharacterController))]
 public class CharacterMovementController : MonoBehaviour
 {
-    private const float MAX_SPEED = 1.5f;
+    [HideInInspector]
+    public bool CanMove = true;
 
-    public bool CanMove
-    {
-        get
-        {
-            return canMove;
-        }
+    public float MaxSpeed = 5f;
+    public float Speed = 0.2f;
+    public float JumpSpeed = 8;
+    public float InAirMovementMultipliar = 0.5f;
+    public float Gravity = 9.8f;
+    public float PlayerPivitToGroundDistance = 1.5f;
 
-        set
-        {
-            canMove = value;
-        }
-    }
-
+<<<<<<< HEAD:Assets/Scripts/CharacterMovementController.cs
     [SerializeField] private float walkSpeed = 1.5f;
     [SerializeField] private float inAirControl = 0.1f;
     [SerializeField] private float jumpHeight = 1.7f;
@@ -53,14 +49,22 @@ public class CharacterMovementController : MonoBehaviour
     {
         myRigidBody.freezeRotation = true;
         myRigidBody.useGravity = true;
+=======
+    private CharacterController controller;
+    private Vector3 velocity = new Vector3();
+    private float velocitySpeed = 0;
+
+    private void Awake()
+    {
+        controller = GetComponent<CharacterController>();
+>>>>>>> develop:Assets/Scripts/Controller/CharacterMovementController.cs
     }
 
     private void Update()
     {
-        GetInput();
-        CheckForMaxSpeed();
-    }
+        if (GameStateController.Instance.PausedState == PausedStates.Paused) return;
 
+<<<<<<< HEAD:Assets/Scripts/CharacterMovementController.cs
     void OnCollisionExit(Collision collision)
     {
         if (collision.transform == transform.parent)
@@ -87,99 +91,43 @@ public class CharacterMovementController : MonoBehaviour
             currentSpeed = Mathf.Lerp(currentSpeed, -MAX_SPEED, Time.deltaTime * walkSpeed);
         else if (Input.GetKey(KeyCode.D) && grounded && canMove)
             currentSpeed = Mathf.Lerp(currentSpeed, MAX_SPEED, Time.deltaTime * walkSpeed);
+=======
+        if (Input.GetKey(KeyCode.A) && CanMove)
+            velocity.x = Mathf.Lerp(velocity.x, -MaxSpeed, Speed);
+        else if (Input.GetKey(KeyCode.D) && CanMove)
+            velocity.x = Mathf.Lerp(velocity.x, MaxSpeed, Speed);
+>>>>>>> develop:Assets/Scripts/Controller/CharacterMovementController.cs
         else
-            currentSpeed = Mathf.Lerp(currentSpeed, 0, Time.deltaTime * walkSpeed * 3);
+            velocity.x = Mathf.Lerp(velocity.x, 0, Speed * 3);
 
-        currentSpeed = Mathf.Clamp(currentSpeed, -MAX_SPEED, MAX_SPEED);
-
-        inputVector.x = currentSpeed;
-
-        if (grounded)
+        if (controller.isGrounded)
         {
-            Vector3 velocityChange = CalculateVelocityChange(inputVector);
-
-            myRigidBody.AddForce(velocityChange, ForceMode.VelocityChange);
-
-            if (CanJump && jumpFlag)
-            {
-                jumpFlag = false;
-                myRigidBody.velocity = new Vector3(myRigidBody.velocity.x, myRigidBody.velocity.y + CalculateJumpVerticalSpeed(), myRigidBody.velocity.z);
-            }
-
-            grounded = false;
+            velocitySpeed = 0;
+            if (Input.GetKeyDown(KeyCode.Space) && CanMove)
+                velocitySpeed = JumpSpeed;
         }
+
+        velocitySpeed -= Gravity * Time.deltaTime;
+        velocity.y = velocitySpeed;
+
+        if (controller.isGrounded)
+            controller.Move(velocity * Time.deltaTime);
         else
+            controller.Move((new Vector3(velocity.x * InAirMovementMultipliar, velocity.y, velocity.z)) * Time.deltaTime);
+    }
+
+    private bool IsGrounded()
+    {
+        Ray ray = new Ray(transform.transform.position, Vector2.down);
+        RaycastHit[] hits = Physics.RaycastAll(ray, 10);
+
+        for (int i = 0; i < hits.Length; i++)
         {
-            Vector3 velocityChange = (transform.TransformDirection(inputVector) * inAirControl);
-            myRigidBody.AddForce(velocityChange, ForceMode.VelocityChange);
+            print(Vector3.Distance(transform.position, hits[i].point));
+            if (Vector3.Distance(transform.position, hits[i].point) <= PlayerPivitToGroundDistance)
+                return true;
         }
-    }
 
-    private Vector3 CalculateVelocityChange(Vector3 inputVector)
-    {
-        var relativeVelocity = transform.TransformDirection(inputVector);
-        relativeVelocity.x *= (CanRunSidestep && Input.GetKey(KeyCode.LeftShift)) ? runSidestepSpeed : sidestepSpeed;
-
-        var currRelativeVelocity = myRigidBody.velocity - groundVelocity;
-        var velocityChange = relativeVelocity - currRelativeVelocity;
-        velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
-        velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
-        velocityChange.y = 0;
-
-        return velocityChange;
-    }
-
-    private void TrackGrounded(Collision collision)
-    {
-        var maxHeight = capsule.bounds.min.y + capsule.radius * .9f;
-        foreach (ContactPoint contact in collision.contacts)
-        {
-            if (contact.point.y < maxHeight)
-            {
-                if (isKinematic(collision))
-                {
-                    groundVelocity = collision.rigidbody.velocity;
-                    transform.parent = collision.transform;
-                }
-                else if (isStatic(collision))
-                    transform.parent = collision.transform;
-                else
-                    groundVelocity = Vector3.zero;
-
-                grounded = true;
-            }
-
-            break;
-        }
-    }
-
-    private void CheckForMaxSpeed()
-    {
-        //myRigidBody.velocity = Vector3.ClampMagnitude(myRigidBody.velocity, MAX_SPEED);
-    }
-
-    private float CalculateJumpVerticalSpeed()
-    {
-        return Mathf.Sqrt(2f * jumpHeight * Mathf.Abs(Physics.gravity.y * 2));
-    }
-
-    private bool isKinematic(Collision collision)
-    {
-        return isKinematic(capsule.transform);
-    }
-
-    private bool isKinematic(Transform transform)
-    {
-        return myRigidBody && myRigidBody.isKinematic;
-    }
-
-    private bool isStatic(Collision collision)
-    {
-        return isStatic(collision.transform);
-    }
-
-    private bool isStatic(Transform transform)
-    {
-        return transform.gameObject.isStatic;
+        return false;
     }
 }

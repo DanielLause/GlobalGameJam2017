@@ -37,7 +37,7 @@ public class PortalController : MonoBehaviour
 
     IEnumerator Delay()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         player.transform.position = End.position;
         cameraController.transform.position = new Vector3(player.transform.position.x, player.transform.position.y * cameraController.HeightAboveToFollow, player.transform.position.z + cameraController.DistanceFromToFollow);
         cameraController.transform.LookAt(player.transform.position);

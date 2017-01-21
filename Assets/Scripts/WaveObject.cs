@@ -6,31 +6,38 @@ using UnityEngine;
 public class WaveObject : MonoBehaviour
 {
     public GameObject WaveParticleObject;
-    public float PushPower = 650;
-    public float PushRadius = 4;
+    public float PushPower = 170;
+    public float PushRadius = 1.5f;
     public float ResetDelay = 3;
 
     private bool isAbleToPush = true;
+    private CharacterMovementController player;
 
-    private void OnCollisionEnter(Collision collision)
+    private void Awake()
     {
-        if (isAbleToPush)
-        {
-            AddExplosionForce();
-            InstantiateWave();
-            StartCoroutine(Timer());
-        }
+        player = GameObject.Find("Player").GetComponent<CharacterMovementController>();
     }
 
-    private void AddExplosionForce()
+    private void Update()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, PushRadius);
-        foreach (Collider hit in colliders)
-        {
-            Rigidbody rb = hit.GetComponent<Rigidbody>();
+        if (!isAbleToPush) return;
 
-            if (rb != null)
-                rb.AddExplosionForce(PushPower, transform.position, PushRadius, 3.0F);
+        if (Vector3.Distance(player.transform.position, transform.position) <= PushRadius)
+        {
+            AddExplosionForce(player.transform);
+            InstantiateWave();
+            StartCoroutine(Timer());
+        } 
+    }
+
+    private void AddExplosionForce(Transform other)
+    {
+        CharakterControllerExplosionForce impactReceiver = other.transform.GetComponent<CharakterControllerExplosionForce>();
+
+        if (impactReceiver != null)
+        {
+            Vector3 dir = other.position - transform.position;
+            impactReceiver.AddImpact(dir, PushPower);
         }
     }
 
