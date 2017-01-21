@@ -9,7 +9,8 @@ public class GameUIController : UnitySingleton<GameUIController>
     public FadeBlackView FadeBlackView;
 
     [Header("Settings")]
-    public float FadeSpeed;
+    [SerializeField]
+    private float fadeSpeed;
 
     public void Fade()
     {
@@ -24,14 +25,14 @@ public class GameUIController : UnitySingleton<GameUIController>
         {
             while (FadeBlackView.CanvasGroup.alpha != 0)
             {
-                FadeBlackView.CanvasGroup.alpha -= (FadeSpeed / 10);
+                FadeBlackView.CanvasGroup.alpha -= (fadeSpeed / 10);
                 yield return new WaitForSecondsRealtime(0.01f);
             }
         }
         else
             while (FadeBlackView.CanvasGroup.alpha != 1)
             {
-                FadeBlackView.CanvasGroup.alpha += (FadeSpeed /10);
+                FadeBlackView.CanvasGroup.alpha += (fadeSpeed /10);
                 yield return new WaitForSecondsRealtime(0.01f);
             }
 
