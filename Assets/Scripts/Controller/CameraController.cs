@@ -12,6 +12,10 @@ public class CameraController : MonoBehaviour
 
     private Vector3 lookAtPosition;
     private Coroutine faderCoroutine;
+    private bool isPresenting = false;
+
+    private Coroutine presentTimerC;
+    private Coroutine presentingUpdateC;
 
     private void Start()
     {
@@ -20,8 +24,23 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        Follow();
-        LookAt();
+        if (!isPresenting)
+        {
+            Follow();
+            LookAt();
+        }
+    }
+
+    public void Present(Vector3 target, float duration)
+    {
+        if (presentingUpdateC != null)
+            StopCoroutine(presentingUpdateC);
+
+        if (presentTimerC != null)
+            StopCoroutine(presentTimerC);
+
+        presentTimerC = StartCoroutine(PresentTimer(duration));
+        presentingUpdateC = StartCoroutine(PresentingUpdate(target));
     }
 
     private void Follow()
@@ -34,5 +53,26 @@ public class CameraController : MonoBehaviour
     {
         lookAtPosition = Vector3.Lerp(lookAtPosition, ToFollow.position, Time.deltaTime * CameraLookAtSpeed);
         transform.LookAt(lookAtPosition);
+    }
+
+    private IEnumerator PresentingUpdate(Vector3 target)
+    {
+        yield return new WaitForFixedUpdate();
+
+        Vector3 wantedPos = new Vector3(target.x, target.y + HeightAboveToFollow, target.z + DistanceFromToFollow);
+        transform.position = Vector3.Lerp(transform.position, wantedPos, Time.deltaTime * CameraFollowSpeed);
+
+        lookAtPosition = Vector3.Lerp(lookAtPosition, target, Time.deltaTime * CameraLookAtSpeed);
+        transform.LookAt(lookAtPosition);
+
+        if (isPresenting)
+            presentingUpdateC = StartCoroutine(PresentingUpdate(target));
+    }
+
+    private IEnumerator PresentTimer(float duration)
+    {
+        isPresenting = true;
+        yield return new WaitForSeconds(duration);
+        isPresenting = false;
     }
 }
