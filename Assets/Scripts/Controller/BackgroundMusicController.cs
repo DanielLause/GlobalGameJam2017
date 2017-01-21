@@ -153,11 +153,4 @@ public class BackgroundMusicController : UnitySingleton<BackgroundMusicControlle
             Perc_Music.UnPause();
         }
     }
-    private bool IsAnyPickUpActive()
-    {
-        if ((Bass_PickUp.isPlaying || Flute_PickUp.isPlaying || Harp_PickUp.isPlaying || Perc_PickUp.isPlaying) && gameStateController.PausedState == PausedStates.UnPause)
-            return true;
-        else
-            return false;
-    }
 }

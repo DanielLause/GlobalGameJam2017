@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4266491826650182}
   - component: {fileID: 33390812425417678}
-  - component: {fileID: 136346199814260966}
   - component: {fileID: 23095342824408142}
   - component: {fileID: 114452396114116476}
   m_Layer: 0
@@ -39,7 +38,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4481957527110206}
   - component: {fileID: 33226363378816100}
-  - component: {fileID: 65648097913456088}
   - component: {fileID: 23465147581760510}
   - component: {fileID: 114376300703779196}
   m_Layer: 0
@@ -57,6 +55,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4894765132240198}
+  - component: {fileID: 114126169223742992}
   m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
@@ -128,7 +127,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1533796601165020}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.15, y: -1.04, z: -20.46}
+  m_LocalPosition: {x: 2.58, y: 1.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4481957527110206}
@@ -212,18 +211,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1019382257906040}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65648097913456088
-BoxCollider:
+--- !u!114 &114126169223742992
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1360206552293884}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_GameObject: {fileID: 1533796601165020}
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb1e5dd0109b1cd4392a58d0f21fe4dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectsToDeactivate: []
+  Type: 2
+  DistanceToPlayer: 1
 --- !u!114 &114376300703779196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -252,19 +253,6 @@ MonoBehaviour:
   RotateDirection: 1
   RotationSpeed: 3
   Paused: 0
---- !u!136 &136346199814260966
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1019382257906040}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &198243379349592308
 ParticleSystem:
   m_ObjectHideFlags: 1
