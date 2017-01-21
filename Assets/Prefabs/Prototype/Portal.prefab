@@ -9,56 +9,54 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1338350193456180}
+  m_RootGameObject: {fileID: 1461803850750544}
   m_IsPrefabParent: 1
---- !u!1 &1338350193456180
+--- !u!1 &1461803850750544
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4909524307066492}
-  - component: {fileID: 33874421532659288}
-  - component: {fileID: 65909449137445776}
-  - component: {fileID: 23267017654869620}
-  - component: {fileID: 54520346823274974}
-  - component: {fileID: 114678066258334188}
-  - component: {fileID: 114358904816291936}
+  - component: {fileID: 4607102043034574}
+  - component: {fileID: 33876055270183612}
+  - component: {fileID: 65220617088703160}
+  - component: {fileID: 23841038444523334}
+  - component: {fileID: 114853071345375894}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4909524307066492
+--- !u!4 &4607102043034574
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1338350193456180}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: -31.458, y: 0.76, z: -1.28}
+  m_GameObject: {fileID: 1461803850750544}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.46, y: 100.17809, z: -111.583084}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
---- !u!23 &23267017654869620
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23841038444523334
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1338350193456180}
-  m_Enabled: 1
+  m_GameObject: {fileID: 1461803850750544}
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: c5afbf0087893254994ee64864930426, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -76,72 +74,36 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &33874421532659288
+--- !u!33 &33876055270183612
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1338350193456180}
+  m_GameObject: {fileID: 1461803850750544}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54520346823274974
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1338350193456180}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &65909449137445776
+--- !u!65 &65220617088703160
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1338350193456180}
+  m_GameObject: {fileID: 1461803850750544}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114358904816291936
+--- !u!114 &114853071345375894
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1338350193456180}
+  m_GameObject: {fileID: 1461803850750544}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec00da1ef03c1a344b40e506e3494c29, type: 3}
+  m_Script: {fileID: 11500000, guid: aede5d3b54e6daa4b901892200179ab4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WaveParticleObject: {fileID: 0}
-  PushPower: 650
-  PushRadius: 4
-  ResetDelay: 3
-  Sounds: []
---- !u!114 &114678066258334188
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1338350193456180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f71f23f07b7e4044885d72198c37333b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WayPoints: []
-  DistanceToSetNewTarget: 0.3
-  MoveSpeed: 5
-  StartPatrolOnAwake: 1
-  Paused: 0
-  ActivateSlow: 0
-  DistanceToSlow: 5
-  SlowMoveSpeed: 2
+  Start: {fileID: 4607102043034574}
+  End: {fileID: 0}
+  DistanceToPortalToActivate: 2
