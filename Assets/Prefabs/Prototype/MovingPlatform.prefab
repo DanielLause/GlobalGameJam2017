@@ -121,7 +121,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WayPoints: []
-  DistanceToTarget: 0.3
+  DistanceToSetNewTarget: 0.3
   MoveSpeed: 5
   StartPatrolOnAwake: 0
   Paused: 0
+  ActivateSlow: 1
+  DistanceToSlow: 1
+  SlowMoveSpeed: 2

@@ -436,6 +436,16 @@ Prefab:
       propertyPath: WayPoints.Array.data[0]
       value: 
       objectReference: {fileID: 50383472}
+    - target: {fileID: 114678066258334188, guid: 5af5c62554a4b3b4cb0384d39018e2d1,
+        type: 2}
+      propertyPath: ActivateSlow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114678066258334188, guid: 5af5c62554a4b3b4cb0384d39018e2d1,
+        type: 2}
+      propertyPath: DistanceToSlow
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5af5c62554a4b3b4cb0384d39018e2d1, type: 2}
   m_IsPrefabParent: 0
@@ -1318,6 +1328,16 @@ Prefab:
       propertyPath: WayPoints.Array.data[0]
       value: 
       objectReference: {fileID: 222524200}
+    - target: {fileID: 114678066258334188, guid: 5af5c62554a4b3b4cb0384d39018e2d1,
+        type: 2}
+      propertyPath: ActivateSlow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114678066258334188, guid: 5af5c62554a4b3b4cb0384d39018e2d1,
+        type: 2}
+      propertyPath: DistanceToSlow
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5af5c62554a4b3b4cb0384d39018e2d1, type: 2}
   m_IsPrefabParent: 0
@@ -1622,6 +1642,16 @@ Prefab:
       propertyPath: WayPoints.Array.data[0]
       value: 
       objectReference: {fileID: 301867220}
+    - target: {fileID: 114678066258334188, guid: 5af5c62554a4b3b4cb0384d39018e2d1,
+        type: 2}
+      propertyPath: ActivateSlow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114678066258334188, guid: 5af5c62554a4b3b4cb0384d39018e2d1,
+        type: 2}
+      propertyPath: DistanceToSlow
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5af5c62554a4b3b4cb0384d39018e2d1, type: 2}
   m_IsPrefabParent: 0
@@ -1775,6 +1805,16 @@ Prefab:
       propertyPath: WayPoints.Array.data[0]
       value: 
       objectReference: {fileID: 80657236}
+    - target: {fileID: 114678066258334188, guid: 5af5c62554a4b3b4cb0384d39018e2d1,
+        type: 2}
+      propertyPath: ActivateSlow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114678066258334188, guid: 5af5c62554a4b3b4cb0384d39018e2d1,
+        type: 2}
+      propertyPath: DistanceToSlow
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5af5c62554a4b3b4cb0384d39018e2d1, type: 2}
   m_IsPrefabParent: 0
@@ -2226,6 +2266,16 @@ Prefab:
       propertyPath: StartPatrolOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114678066258334188, guid: 5af5c62554a4b3b4cb0384d39018e2d1,
+        type: 2}
+      propertyPath: ActivateSlow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114678066258334188, guid: 5af5c62554a4b3b4cb0384d39018e2d1,
+        type: 2}
+      propertyPath: DistanceToSlow
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5af5c62554a4b3b4cb0384d39018e2d1, type: 2}
   m_IsPrefabParent: 0
@@ -2392,6 +2442,16 @@ Prefab:
       propertyPath: WayPoints.Array.data[0]
       value: 
       objectReference: {fileID: 576429688}
+    - target: {fileID: 114678066258334188, guid: 5af5c62554a4b3b4cb0384d39018e2d1,
+        type: 2}
+      propertyPath: ActivateSlow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114678066258334188, guid: 5af5c62554a4b3b4cb0384d39018e2d1,
+        type: 2}
+      propertyPath: DistanceToSlow
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5af5c62554a4b3b4cb0384d39018e2d1, type: 2}
   m_IsPrefabParent: 0
@@ -3132,6 +3192,16 @@ Prefab:
       propertyPath: Paused
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114678066258334188, guid: 5af5c62554a4b3b4cb0384d39018e2d1,
+        type: 2}
+      propertyPath: ActivateSlow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114678066258334188, guid: 5af5c62554a4b3b4cb0384d39018e2d1,
+        type: 2}
+      propertyPath: DistanceToSlow
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5af5c62554a4b3b4cb0384d39018e2d1, type: 2}
   m_IsPrefabParent: 0
@@ -3854,6 +3924,16 @@ Prefab:
       propertyPath: WayPoints.Array.data[0]
       value: 
       objectReference: {fileID: 1103299183}
+    - target: {fileID: 114678066258334188, guid: 5af5c62554a4b3b4cb0384d39018e2d1,
+        type: 2}
+      propertyPath: ActivateSlow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114678066258334188, guid: 5af5c62554a4b3b4cb0384d39018e2d1,
+        type: 2}
+      propertyPath: DistanceToSlow
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5af5c62554a4b3b4cb0384d39018e2d1, type: 2}
   m_IsPrefabParent: 0
@@ -3915,6 +3995,16 @@ Prefab:
       propertyPath: WayPoints.Array.data[0]
       value: 
       objectReference: {fileID: 1781926083}
+    - target: {fileID: 114678066258334188, guid: 5af5c62554a4b3b4cb0384d39018e2d1,
+        type: 2}
+      propertyPath: ActivateSlow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114678066258334188, guid: 5af5c62554a4b3b4cb0384d39018e2d1,
+        type: 2}
+      propertyPath: DistanceToSlow
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5af5c62554a4b3b4cb0384d39018e2d1, type: 2}
   m_IsPrefabParent: 0
@@ -5064,6 +5154,11 @@ Prefab:
         type: 2}
       propertyPath: MoveSpeed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114685677972520906, guid: 4579913f9f5a1ff46931b7a7234c0ba1,
+        type: 2}
+      propertyPath: DistanceToSlow
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4579913f9f5a1ff46931b7a7234c0ba1, type: 2}
@@ -6389,6 +6484,16 @@ Prefab:
       propertyPath: WayPoints.Array.data[0]
       value: 
       objectReference: {fileID: 2008437877}
+    - target: {fileID: 114678066258334188, guid: 5af5c62554a4b3b4cb0384d39018e2d1,
+        type: 2}
+      propertyPath: ActivateSlow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114678066258334188, guid: 5af5c62554a4b3b4cb0384d39018e2d1,
+        type: 2}
+      propertyPath: DistanceToSlow
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5af5c62554a4b3b4cb0384d39018e2d1, type: 2}
   m_IsPrefabParent: 0
@@ -6687,10 +6792,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WayPoints:
   - {fileID: 1088047018}
-  DistanceToTarget: 0.3
+  DistanceToSetNewTarget: 0.3
   MoveSpeed: 5
   StartPatrolOnAwake: 1
   Paused: 0
+  ActivateSlow: 1
+  DistanceToSlow: 2
+  SlowMoveSpeed: 2
 --- !u!54 &2043827379
 Rigidbody:
   m_ObjectHideFlags: 0
