@@ -125,7 +125,7 @@ MonoBehaviour:
   PushPower: 700
   PushRadius: 4
   ResetDelay: 3
-  Sounds: []
+  Type: 0
 --- !u!23 &439522358
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1032,7 +1032,7 @@ MonoBehaviour:
   PushPower: 700
   PushRadius: 4
   ResetDelay: 3
-  Sounds: []
+  Type: 0
 --- !u!23 &1892473061
 MeshRenderer:
   m_ObjectHideFlags: 0
