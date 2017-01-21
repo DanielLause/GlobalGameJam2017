@@ -17,6 +17,9 @@ public class CharacterMovementController : MonoBehaviour
     public float Gravity = 9.8f;
     public float PlayerPivitToGroundDistance = 1.5f;
 
+    [Header("Plattform Collider Settings")]
+    public Transform FootPosition;
+
     private CharacterController controller;
     private Vector3 velocity = new Vector3();
     private float velocitySpeed = 0;
@@ -51,6 +54,15 @@ public class CharacterMovementController : MonoBehaviour
             controller.Move(velocity * Time.deltaTime);
         else
             controller.Move((new Vector3(velocity.x * InAirMovementMultipliar, velocity.y, velocity.z)) * Time.deltaTime);
+
+        FixPosition();
+    }
+
+    private void FixPosition()
+    {
+        Vector3 fixedPos = transform.position;
+        fixedPos.z = 0;
+        transform.position = fixedPos;
     }
 
     private bool IsGrounded()
