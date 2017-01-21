@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
 public class WaveObject : MonoBehaviour
 {
     public GameObject WaveParticleObject;
@@ -15,13 +16,13 @@ public class WaveObject : MonoBehaviour
     {
         if (isAbleToPush)
         {
-            AddUpwardsForce();
+            AddExplosionForce();
             InstantiateWave();
             StartCoroutine(Timer());
         }
     }
 
-    private void AddUpwardsForce()
+    private void AddExplosionForce()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, PushRadius);
         foreach (Collider hit in colliders)

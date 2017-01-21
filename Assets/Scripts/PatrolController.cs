@@ -7,15 +7,21 @@ public class PatrolController : MonoBehaviour
 {
     [Header("Settings")]
     public List<Transform> WayPoints;
-    public float DistanceToTarget = 0.3f;
-    public float MoveSpeed = 0;
-    public bool StartPatrolOnAwake = false;
+    public float DistanceToSetNewTarget = 0.3f;
+    public float MoveSpeed = 5;
+    public bool StartPatrolOnAwake = true;
     [Tooltip("On active: the patrol is paused")]
     public bool Paused = false;
+
+    [Header("SlowToEndPoint")]
+    public bool ActivateSlow = false;
+    public float DistanceToSlow = 5;
+    public float SlowMoveSpeed = 2;
 
     private Vector3 currentTarget;
     private int nextTargetIndex = 1;
     private bool indexForward = true;
+    private float startMoveSpeed;
     private Transform myTransform;
     private Rigidbody myRigid;
     private List<Vector3> targets;
@@ -28,6 +34,7 @@ public class PatrolController : MonoBehaviour
 
     void Start()
     {
+        startMoveSpeed = MoveSpeed;
         SetWayPoints();
         currentTarget = GetNextTarget();
 
@@ -37,7 +44,7 @@ public class PatrolController : MonoBehaviour
 
     public void StartPatrol()
     {
-        StartCoroutine(Patrol());
+        StartCoroutine(PatrolWithoutLerp());
     }
 
     private Vector3 GetNextTarget()
@@ -63,7 +70,6 @@ public class PatrolController : MonoBehaviour
                 nextTargetIndex -= 1;
             else
                 indexForward = !indexForward;
-            print(nextTargetIndex);
             return this.currentTarget;
         }
     }
@@ -89,36 +95,48 @@ public class PatrolController : MonoBehaviour
             targets.Add(point.position);
     }
 
-    private IEnumerator Patrol()
+    private IEnumerator PatrolWithoutLerp()
     {
         if (!Paused)
         {
             var distance = CheckDistanceToTarget(currentTarget);
 
-            if (distance > DistanceToTarget)
+            if (ActivateSlow)
+            {
+                if (distance < DistanceToSlow)
+                {
+                    MoveSpeed = Mathf.Lerp(MoveSpeed, SlowMoveSpeed, 0.05f);
+                }
+                else if (distance > DistanceToSlow && DistanceToSlow != 0)
+                {
+                    MoveSpeed = Mathf.Lerp(MoveSpeed, startMoveSpeed, 0.05f);
+                }
+            }
+
+            if (distance > DistanceToSetNewTarget)
             {
                 var heading = currentTarget - myTransform.position;
                 var d = heading.magnitude;
-                var direction = heading / d; // This is now the normalized direction.
+                var direction = heading / d;
                 myRigid.MovePosition(myTransform.position + direction * MoveSpeed * Time.deltaTime);
             }
-            else if (distance <= DistanceToTarget)
+            else if (distance <= DistanceToSetNewTarget)
             {
                 currentTarget = GetNextTarget();
 
                 var heading = currentTarget - myTransform.position;
                 var d = heading.magnitude;
-                var direction = heading / d; // This is now the normalized direction.
+                var direction = heading / d;
                 myRigid.MovePosition(myTransform.position + direction * MoveSpeed * Time.deltaTime);
             }
 
             yield return new WaitForEndOfFrame();
-            StartCoroutine(Patrol());
+            StartCoroutine(PatrolWithoutLerp());
         }
         else
         {
             yield return new WaitForEndOfFrame();
-            StartCoroutine(Patrol());
+            StartCoroutine(PatrolWithoutLerp());
         }
 
     }
