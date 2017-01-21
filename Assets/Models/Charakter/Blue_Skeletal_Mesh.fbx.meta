@@ -1,0 +1,164 @@
+fileFormatVersion: 2
+guid: 01893c7eae2ea4e4281efcdbd7884aeb
+timeCreated: 1485021202
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Head_CTRL1
+    100004: J_Arm_2_L1_1
+    100006: J_Arm_2_R1_1
+    100008: J_Arm_Tip_L1
+    100010: J_Arm_Tip_R1
+    100012: J_Head1
+    100014: J_Hip
+    100016: J_Leg_2_L1_1
+    100018: J_Leg_L1
+    100020: J_Leg_Tip_L1
+    100022: J_Neck1
+    100024: J_Pelvis_L1
+    100026: J_Pelvis_R1
+    100028: J_Reg_2_R1_1
+    100030: J_Reg_R1
+    100032: J_Reg_Tip_R1
+    100034: J_Spine1
+    100036: J_Spine_2_1
+    100038: joint11
+    100040: joint11 1
+    100042: joint13
+    100044: joint14
+    100046: joint14 1
+    100048: joint15
+    100050: joint15 1
+    100052: joint16
+    100054: joint16 1
+    100056: joint17
+    100058: joint17 1
+    100060: joint18
+    100062: joint18 1
+    100064: joint19
+    100066: joint19 1
+    100068: joint20
+    100070: joint20 1
+    100072: joint29
+    100074: Neck__CTRL1
+    100076: nurbsCircle1
+    100078: nurbsCircle2
+    100080: pSphere4
+    100082: Spine1_CTRL1
+    100084: Spine2__CTRL1
+    400000: //RootNode
+    400002: Head_CTRL1
+    400004: J_Arm_2_L1_1
+    400006: J_Arm_2_R1_1
+    400008: J_Arm_Tip_L1
+    400010: J_Arm_Tip_R1
+    400012: J_Head1
+    400014: J_Hip
+    400016: J_Leg_2_L1_1
+    400018: J_Leg_L1
+    400020: J_Leg_Tip_L1
+    400022: J_Neck1
+    400024: J_Pelvis_L1
+    400026: J_Pelvis_R1
+    400028: J_Reg_2_R1_1
+    400030: J_Reg_R1
+    400032: J_Reg_Tip_R1
+    400034: J_Spine1
+    400036: J_Spine_2_1
+    400038: joint11
+    400040: joint11 1
+    400042: joint13
+    400044: joint14
+    400046: joint14 1
+    400048: joint15
+    400050: joint15 1
+    400052: joint16
+    400054: joint16 1
+    400056: joint17
+    400058: joint17 1
+    400060: joint18
+    400062: joint18 1
+    400064: joint19
+    400066: joint19 1
+    400068: joint20
+    400070: joint20 1
+    400072: joint29
+    400074: Neck__CTRL1
+    400076: nurbsCircle1
+    400078: nurbsCircle2
+    400080: pSphere4
+    400082: Spine1_CTRL1
+    400084: Spine2__CTRL1
+    4300000: pSphere4
+    9500000: //RootNode
+    13700000: pSphere4
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PortalController : MonoBehaviour
 {
+    public bool IsDeathPortal;
     public Transform Start;
     public Transform End;
 
@@ -11,12 +12,14 @@ public class PortalController : MonoBehaviour
 
     private CharacterMovementController player;
     private CameraController cameraController;
+    private GodVoiceController godVoice;
     private bool isAbleToActivate = true;
 
     private void Awake()
     {
         player = GameObject.Find("Player").GetComponent<CharacterMovementController>();
         cameraController = Camera.main.GetComponent<CameraController>();
+        godVoice = FindObjectOfType<GodVoiceController>();
     }
 
     private void Update()
@@ -32,6 +35,9 @@ public class PortalController : MonoBehaviour
             isAbleToActivate = false;
             StartCoroutine(Delay());
             GameUIController.Instance.Fade();
+
+            if (IsDeathPortal)
+                godVoice.PlayDeathSound();
         }
     }
 

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class CharakterControllerExplosionForce : MonoBehaviour
 {
-    float mass = 3.0F;
-    Vector3 impact = Vector3.zero;
+    private float mass = 3.0F;
+    private Vector3 impact = Vector3.zero;
     private CharacterController character;
+
     void Start()
     {
         character = GetComponent<CharacterController>();
@@ -14,7 +15,9 @@ public class CharakterControllerExplosionForce : MonoBehaviour
 
     void Update()
     {
-        if (impact.magnitude > 0.2F) character.Move(impact * Time.deltaTime);
+        if (impact.magnitude > 0.2F)
+            character.Move(impact * Time.deltaTime);
+
         impact = Vector3.Lerp(impact, Vector3.zero, 5 * Time.deltaTime);
     }
 
