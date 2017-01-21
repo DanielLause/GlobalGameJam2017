@@ -9,8 +9,7 @@ public class WaveObject : MonoBehaviour
     public float PushPower = 170;
     public float PushRadius = 1.5f;
     public float ResetDelay = 3;
-
-    public AudioClip[] Sounds;
+    public InstromentType Type;
 
     private bool isAbleToPush = true;
     private CharacterMovementController player;
@@ -59,10 +58,7 @@ public class WaveObject : MonoBehaviour
 
     private void PlaySound()
     {
-        if (Sounds.Length != 0)
-        {
-            AudioClip toPlay = Sounds[Random.Range(0, Sounds.Length + 1)];
-        }
+        BackgroundMusicController.Instance.PlayWaveBoxJump(Type);
     }
 
     IEnumerator Timer()
