@@ -5,6 +5,7 @@ using UnityEngine;
 public class NodeController : MonoBehaviour {
 
     public List<GameObject> ObjectsToDeactivate;
+    public InstromentType Type;
 
     void OnCollisionEnter(Collision other)
     {
