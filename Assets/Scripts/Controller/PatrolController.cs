@@ -30,6 +30,7 @@ public class PatrolController : MonoBehaviour
     {
         myTransform = GetComponent<Transform>();
         myRigid = GetComponent<Rigidbody>();
+        myRigid.isKinematic = true ;
         gameStateController = GameStateController.Instance;
     }
 
