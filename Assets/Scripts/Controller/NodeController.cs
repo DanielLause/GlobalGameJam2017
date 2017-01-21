@@ -2,17 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NodeController : MonoBehaviour {
+public class NodeController : MonoBehaviour
+{
 
     public List<GameObject> ObjectsToDeactivate;
     public InstromentType Type;
+    public float DistanceToPlayer = 1;
 
-    void OnCollisionEnter(Collision other)
+    private Transform playerTransform;
+    private Transform myTransform;
+    BackgroundMusicController backGroundMusicController;
+
+    void Awake()
     {
-        if (other.gameObject.tag == "Player")
+        myTransform = GetComponent<Transform>();
+        playerTransform = GameObject.Find("Player").transform;
+        backGroundMusicController = BackgroundMusicController.Instance;
+    }
+
+    void FixedUpdate()
+    {
+        float distance = Vector3.Distance(myTransform.position, playerTransform.position);
+
+        if (distance <= DistanceToPlayer)
         {
-            Debug.Log("Play node at this point.");
+            backGroundMusicController.StartPickUpSound(Type);
             SetActiveAllObjectsInList(false);
+            myTransform.gameObject.SetActive(false);
         }
     }
 
