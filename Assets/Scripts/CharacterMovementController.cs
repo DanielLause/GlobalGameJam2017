@@ -10,7 +10,6 @@ public class CharacterMovementController : MonoBehaviour
     private const float MAX_SPEED = 1.5f;
 
     [SerializeField] private float walkSpeed = 1.5f;
-    [SerializeField] private float runSpeed = 14.0f;
     [SerializeField] private float inAirControl = 0.1f;
     [SerializeField] private float jumpHeight = 1.7f;
     [SerializeField] private float maxVelocityChange = 10.0f;
@@ -45,6 +44,7 @@ public class CharacterMovementController : MonoBehaviour
     private void Update()
     {
         GetInput();
+        CheckForMaxSpeed();
     }
 
     void OnCollisionExit(Collision collision)
@@ -65,13 +65,13 @@ public class CharacterMovementController : MonoBehaviour
 
     private void GetInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && grounded)
             jumpFlag = true;
 
         Vector3 inputVector = new Vector3();
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && grounded)
             currentSpeed = Mathf.Lerp(currentSpeed, -MAX_SPEED, Time.deltaTime * walkSpeed);
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) && grounded)
             currentSpeed = Mathf.Lerp(currentSpeed, MAX_SPEED, Time.deltaTime * walkSpeed);
         else
             currentSpeed = Mathf.Lerp(currentSpeed, 0, Time.deltaTime * walkSpeed * 3);
@@ -82,7 +82,7 @@ public class CharacterMovementController : MonoBehaviour
 
         if (grounded)
         {
-            var velocityChange = CalculateVelocityChange(inputVector);
+            Vector3 velocityChange = CalculateVelocityChange(inputVector);
 
             myRigidBody.AddForce(velocityChange, ForceMode.VelocityChange);
 
@@ -96,7 +96,7 @@ public class CharacterMovementController : MonoBehaviour
         }
         else
         {
-            var velocityChange = transform.TransformDirection(inputVector) * inAirControl;
+            Vector3 velocityChange = (transform.TransformDirection(inputVector) * inAirControl);
             myRigidBody.AddForce(velocityChange, ForceMode.VelocityChange);
         }
     }
@@ -104,10 +104,6 @@ public class CharacterMovementController : MonoBehaviour
     private Vector3 CalculateVelocityChange(Vector3 inputVector)
     {
         var relativeVelocity = transform.TransformDirection(inputVector);
-        if (inputVector.z > 0)
-            relativeVelocity.z *= (CanRun && Input.GetKey(KeyCode.LeftShift)) ? runSpeed : walkSpeed;
-        else
-            relativeVelocity.z *= (CanRun && Input.GetKey(KeyCode.LeftShift)) ? runBackwardSpeed : walkBackwardSpeed;
         relativeVelocity.x *= (CanRunSidestep && Input.GetKey(KeyCode.LeftShift)) ? runSidestepSpeed : sidestepSpeed;
 
         var currRelativeVelocity = myRigidBody.velocity - groundVelocity;
@@ -122,7 +118,7 @@ public class CharacterMovementController : MonoBehaviour
     private void TrackGrounded(Collision collision)
     {
         var maxHeight = capsule.bounds.min.y + capsule.radius * .9f;
-        foreach (var contact in collision.contacts)
+        foreach (ContactPoint contact in collision.contacts)
         {
             if (contact.point.y < maxHeight)
             {
@@ -141,6 +137,11 @@ public class CharacterMovementController : MonoBehaviour
 
             break;
         }
+    }
+
+    private void CheckForMaxSpeed()
+    {
+        //myRigidBody.velocity = Vector3.ClampMagnitude(myRigidBody.velocity, MAX_SPEED);
     }
 
     private float CalculateJumpVerticalSpeed()
