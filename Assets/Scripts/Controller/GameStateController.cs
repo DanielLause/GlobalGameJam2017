@@ -44,7 +44,7 @@ public class GameStateController : UnitySingleton<GameStateController>
                 break;
         }
     }
-    private void SetGameState(GameStates gameState)
+    public void SetGameState(GameStates gameState)
     {
         if (GameState != gameState)
         {
@@ -61,10 +61,8 @@ public class GameStateController : UnitySingleton<GameStateController>
             case GameStates.Menu:
             case GameStates.PausedMenu:
             case GameStates.GameEnd:
-                SetPausedState(PausedStates.Paused);
                 break;
             case GameStates.Game:
-                SetPausedState(PausedStates.UnPause);
                 break;
             default:
                 break;
