@@ -9,15 +9,17 @@ public class Rotation : MonoBehaviour {
     public bool Paused = false;
 
     private Transform myTransform;
+    private GameStateController gameStateController;
 
     void Awake()
     {
         myTransform = GetComponent<Transform>();
+        gameStateController = GameStateController.Instance;
     }
 
     void FixedUpdate()
     {
-        if (!Paused)
+        if (!Paused && (gameStateController.PausedState == PausedStates.UnPause))
         {
             Rotate();
         }

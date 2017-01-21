@@ -42,11 +42,13 @@ public class CharacterMovementController : MonoBehaviour
     private bool CanJump = true;
     private bool CanRun = true;
     private bool canMove = true;
+    private GameStateController gameStateController;
 
     private void Awake()
     {
         myRigidBody = GetComponent<Rigidbody>();
         capsule = GetComponent<CapsuleCollider>();
+        gameStateController = GameStateController.Instance;
     }
 
     private void Start()
@@ -83,9 +85,9 @@ public class CharacterMovementController : MonoBehaviour
             jumpFlag = true;
 
         Vector3 inputVector = new Vector3();
-        if (Input.GetKey(KeyCode.A) && grounded && canMove)
+        if (Input.GetKey(KeyCode.A) && grounded && canMove && (gameStateController.PausedState == PausedStates.UnPause))
             currentSpeed = Mathf.Lerp(currentSpeed, -MAX_SPEED, Time.deltaTime * walkSpeed);
-        else if (Input.GetKey(KeyCode.D) && grounded && canMove)
+        else if (Input.GetKey(KeyCode.D) && grounded && canMove && (gameStateController.PausedState == PausedStates.UnPause))
             currentSpeed = Mathf.Lerp(currentSpeed, MAX_SPEED, Time.deltaTime * walkSpeed);
         else
             currentSpeed = Mathf.Lerp(currentSpeed, 0, Time.deltaTime * walkSpeed * 3);

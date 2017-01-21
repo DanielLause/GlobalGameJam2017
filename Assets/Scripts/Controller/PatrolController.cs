@@ -10,8 +10,7 @@ public class PatrolController : MonoBehaviour
     public float DistanceToSetNewTarget = 0.3f;
     public float MoveSpeed = 5;
     public bool StartPatrolOnAwake = true;
-    [Tooltip("On active: the patrol is paused")]
-    public bool Paused = false;
+    public bool Blocked = false;
 
     [Header("SlowToEndPoint")]
     public bool ActivateSlow = false;
@@ -25,11 +24,13 @@ public class PatrolController : MonoBehaviour
     private Transform myTransform;
     private Rigidbody myRigid;
     private List<Vector3> targets;
+    private GameStateController gameStateController;
 
     void Awake()
     {
         myTransform = GetComponent<Transform>();
         myRigid = GetComponent<Rigidbody>();
+        gameStateController = GameStateController.Instance;
     }
 
     void Start()
@@ -97,7 +98,7 @@ public class PatrolController : MonoBehaviour
 
     private IEnumerator PatrolWithoutLerp()
     {
-        if (!Paused)
+        if (!Blocked &&(gameStateController.PausedState == PausedStates.UnPause) )
         {
             var distance = CheckDistanceToTarget(currentTarget);
 
