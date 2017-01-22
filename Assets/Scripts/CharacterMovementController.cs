@@ -103,7 +103,7 @@ public class CharacterMovementController : MonoBehaviour
     private void FixPosition()
     {
         Vector3 fixedPos = transform.position;
-        fixedPos.z = 0;
+        fixedPos.z = -0.5f;
         transform.position = fixedPos;
     }
 
