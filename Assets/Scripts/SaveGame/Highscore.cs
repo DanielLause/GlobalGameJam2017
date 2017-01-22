@@ -3,7 +3,7 @@ using System.Xml.Serialization;
 
 public class Highscore
 {
-    [XmlAttribute("name")]
+    [XmlElement("name")]
     public int Seconds;
 
     public Highscore()

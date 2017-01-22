@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : UnitySingleton<SceneController>
 {
-    public delegate void SceneChanged(params object[] e);
+    public delegate void SceneChanged(SceneType sceneType);
     public event SceneChanged OnSceneChanged;
 
     private SceneType activeSceneType;
@@ -25,7 +25,7 @@ public class SceneController : UnitySingleton<SceneController>
         activeScene = SceneManager.GetSceneByName(sceneName);
 
         if (OnSceneChanged != null)
-            OnSceneChanged(activeScene, activeSceneType);
+            OnSceneChanged(activeSceneType);
     }
 
     public void LoadScene(string sceneName, LoadSceneMode mode)
@@ -35,7 +35,7 @@ public class SceneController : UnitySingleton<SceneController>
         activeScene = SceneManager.GetSceneByName(sceneName);
 
         if (OnSceneChanged != null)
-            OnSceneChanged(activeScene, activeSceneType);
+            OnSceneChanged( activeSceneType);
     }
 
     public void LoadScene(int sceneBuildIndex)
@@ -45,7 +45,7 @@ public class SceneController : UnitySingleton<SceneController>
         activeScene = SceneManager.GetSceneByBuildIndex(sceneBuildIndex);
 
         if (OnSceneChanged != null)
-            OnSceneChanged(activeScene, activeSceneType);
+            OnSceneChanged(activeSceneType);
     }
 
     public void LoadScene(int sceneBuildIndex, LoadSceneMode mode)
@@ -55,7 +55,7 @@ public class SceneController : UnitySingleton<SceneController>
         activeScene = SceneManager.GetSceneByBuildIndex(sceneBuildIndex);
 
         if (OnSceneChanged != null)
-            OnSceneChanged(activeScene, activeSceneType);
+            OnSceneChanged(activeSceneType);
     }
 
     /// <summary>
@@ -70,7 +70,7 @@ public class SceneController : UnitySingleton<SceneController>
         activeScene = SceneManager.GetSceneByName( scene);
 
         if (OnSceneChanged != null)
-            OnSceneChanged(activeScene, activeSceneType);
+            OnSceneChanged(activeSceneType);
     }
 
     public Scene GetActiveScene()

@@ -23,18 +23,24 @@ public class GameDataController : UnitySingleton<GameDataController>
 
     public void LoadHighScore()
     {
-        using (fileStream = new FileStream(savePathAndData, FileMode.Open))
-        {
-            CurrentHighScore = (Highscore)xmlSerializer.Deserialize(fileStream);
-        }
+        //var serializer = new XmlSerializer(typeof(Highscore));
+        //var stream = new FileStream(dataPath, FileMode.Open);
+        //var container = serializer.Deserialize(stream) as Highscore;
+        //stream.Close();
+
+        //using (fileStream = new FileStream(savePathAndData, FileMode.Open))
+        //{
+        //    CurrentHighScore = (Highscore)xmlSerializer.Deserialize(fileStream);
+        //    print(CurrentHighScore.Seconds);
+        //}
     }
 
     public void SaveHighScore(Highscore highscore)
     {
-        using (fileStream = new FileStream(savePathAndData, FileMode.Create))
-        {
-            xmlSerializer.Serialize(fileStream, highscore);
-        }
+        //using (fileStream = new FileStream(savePathAndData, FileMode.Create))
+        //{
+        //    xmlSerializer.Serialize(fileStream, highscore);
+        //}
     }
 
 }

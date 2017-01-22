@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Countdown : UnitySingleton<Countdown> {
+public class Countdown : UnitySingleton<Countdown>
+{
 
     public delegate void CountdownExpired();
     public event CountdownExpired OnCountDownExpired;
@@ -11,7 +12,7 @@ public class Countdown : UnitySingleton<Countdown> {
     [Header("Reference")]
     public Text CountdownText;
 
-    public bool IsActive{ get; set; }
+    public bool IsActive { get; set; }
 
     private int seconds;
     private Coroutine timer;
@@ -47,7 +48,7 @@ public class Countdown : UnitySingleton<Countdown> {
         StopCoroutine(timer);
         IsActive = false;
     }
-    
+
     public void UnpauseCountdown()
     {
         timer = StartCoroutine(Timer());
