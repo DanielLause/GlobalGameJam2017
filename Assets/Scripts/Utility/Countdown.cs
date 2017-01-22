@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Countdown : UnitySingleton<Countdown> {
+public class Countdown : UnitySingleton<Countdown>
+{
 
     public delegate void CountdownExpired();
     public event CountdownExpired OnCountDownExpired;
@@ -11,10 +12,29 @@ public class Countdown : UnitySingleton<Countdown> {
     [Header("Reference")]
     public Text CountdownText;
 
-    public bool Paused { get; set; }
+    public bool IsActive { get; set; }
 
     private int seconds;
     private Coroutine timer;
+    private bool blockedByPausedState;
+
+    void Awake()
+    {
+        GameStateController.Instance.OnPausedStateChanged += OnPausedStateChanged;
+    }
+
+    private void OnPausedStateChanged(PausedStates activPausedState)
+    {
+        if (activPausedState == PausedStates.Paused && IsActive)
+        {
+            PauseCountdown();
+            blockedByPausedState = true;
+        }
+        else if (activPausedState == PausedStates.UnPause && blockedByPausedState)
+        {
+            UnpauseCountdown();
+        }
+    }
 
     public void StartCountdown(int seconds)
     {
@@ -26,9 +46,9 @@ public class Countdown : UnitySingleton<Countdown> {
     public void PauseCountdown()
     {
         StopCoroutine(timer);
-        Paused = true;
+        IsActive = false;
     }
-    
+
     public void UnpauseCountdown()
     {
         timer = StartCoroutine(Timer());
@@ -36,7 +56,7 @@ public class Countdown : UnitySingleton<Countdown> {
 
     private IEnumerator Timer()
     {
-        Paused = false;
+        IsActive = true;
         yield return new WaitForSeconds(1);
         seconds--;
         CountdownText.text = string.Format("{0}:{1:00}", seconds / 60, seconds % 60);

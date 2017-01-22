@@ -14,7 +14,15 @@ public class GameUIController : UnitySingleton<GameUIController>
 
     void Start()
     {
-        Countdown.Instance.StartCountdown(300);
+        SceneController.Instance.OnSceneChanged += OnSceneChanged;
+    }
+
+    private void OnSceneChanged(SceneType e)
+    {
+        if (e== SceneType.Game)
+        {
+            Countdown.Instance.StartCountdown(300);
+        }
     }
 
     public void Fade()
@@ -40,31 +48,5 @@ public class GameUIController : UnitySingleton<GameUIController>
                 FadeBlackView.CanvasGroup.alpha += (fadeSpeed /10);
                 yield return new WaitForSecondsRealtime(0.01f);
             }
-
-
-
-
-
-
-
-
-
-
-
-        //float tempTotal = 0;
-        //float remaining = tempTotal;
-
-        //if (FadeBlackView.CanvasGroup.alpha < 1)
-        //    tempTotal = 1;
-
-        //float step = FadeStepValue;
-        //float waiter = FadeTime / 1;
-
-        //while (remaining > 0)
-        //{
-        //    tempTotal -= Mathf.Min(remaining, step);
-        //    remaining -= step;
-        //    yield return new WaitForSeconds(waiter);
-        //}
     }
 }
