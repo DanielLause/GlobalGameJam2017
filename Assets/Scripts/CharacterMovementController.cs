@@ -85,9 +85,6 @@ public class CharacterMovementController : MonoBehaviour
             IsRising = false;
         }
 
-        print(IsFalling + ": is falling");
-        print(IsRising + ": is ´rising");
-
         velocitySpeed -= Gravity * Time.deltaTime;
         velocity.y = velocitySpeed;
 

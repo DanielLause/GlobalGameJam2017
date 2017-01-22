@@ -45,6 +45,11 @@ public class NodeController : MonoBehaviour
         {
             objectToDeactivate.SetActive(enable);
         }
+
+        if (ObjectsToDeactivate.Count != 0)
+        {
+            Camera.main.GetComponent<CameraController>().Present(ObjectsToDeactivate[0].transform.position, 3f);
+        }
     }
 
 
