@@ -20,35 +20,32 @@ public class CharakterAnimationController : MonoBehaviour
 
     private void CheckAnimationStates()
     {
+        ResetBools();
+
         if (controller.IsMoving)
         {
-            if (controller.IsJumping)
-            {
-                anim.SetBool("walk", false);
-                anim.SetBool("jump", true);
-                anim.SetBool("idle", false);
-            }
+            if (controller.IsFalling)
+                anim.SetBool("fall", true);
+            else if (controller.IsRising)
+                anim.SetBool("rise", true);
             else
-            {
                 anim.SetBool("walk", true);
-                anim.SetBool("jump", false);
-                anim.SetBool("idle", false);
-            }
         }
-        else if (controller.IsIdleing)
+        else
         {
-            if (controller.IsJumping)
-            {
-                anim.SetBool("walk", false);
-                anim.SetBool("jump", true);
-                anim.SetBool("idle", false);
-            }
+            if (controller.IsFalling)
+                anim.SetBool("fall", true);
+            else if (controller.IsRising)
+                anim.SetBool("rise", true);
             else
-            {
-                anim.SetBool("jump", false);
                 anim.SetBool("walk", false);
-                anim.SetBool("idle", true);
-            }
         }
+    }
+
+    private void ResetBools()
+    {
+        anim.SetBool("walk", false);
+        anim.SetBool("rise", false);
+        anim.SetBool("fall", false);
     }
 }

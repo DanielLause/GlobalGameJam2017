@@ -12,7 +12,9 @@ public class CharacterMovementController : MonoBehaviour
     [HideInInspector]
     public bool IsMoving;
     [HideInInspector]
-    public bool IsJumping;
+    public bool IsRising;
+    [HideInInspector]
+    public bool IsFalling;
     [HideInInspector]
     public bool IsIdleing;
 
@@ -51,13 +53,11 @@ public class CharacterMovementController : MonoBehaviour
         {
             IsMoving = true;
             IsIdleing = false;
-            IsJumping = false;
         }
         else
         {
             IsMoving = false;
             IsIdleing = true;
-            IsJumping = false;
         }
 
         if (controller.isGrounded)
@@ -67,12 +67,26 @@ public class CharacterMovementController : MonoBehaviour
                 velocitySpeed = JumpSpeed;
         }
 
-        if (Mathf.Abs(velocitySpeed) >= 1)
+        if (velocitySpeed >= 0.5f)
         {
-            IsJumping = true;
             IsMoving = false;
             IsIdleing = false;
+            IsRising = true;
         }
+        else if (velocitySpeed <= -0.5f)
+        {
+            IsMoving = false;
+            IsIdleing = false;
+            IsFalling = true;
+        }
+        else
+        {
+            IsFalling = false;
+            IsRising = false;
+        }
+
+        print(IsFalling + ": is falling");
+        print(IsRising + ": is ´rising");
 
         velocitySpeed -= Gravity * Time.deltaTime;
         velocity.y = velocitySpeed;
