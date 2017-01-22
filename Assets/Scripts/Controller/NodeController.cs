@@ -26,7 +26,7 @@ public class NodeController : MonoBehaviour
 
         if (distance <= DistanceToPlayer)
         {
-            backGroundMusicController.StartPickUpSound(Type);
+            backGroundMusicController.PlayPickUpSound(Type);
             SetActiveAllObjectsInList(false);
             myTransform.gameObject.SetActive(false);
         }

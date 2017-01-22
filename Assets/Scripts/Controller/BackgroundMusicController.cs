@@ -6,13 +6,16 @@ public enum InstromentType { Bass, Flute, Harp, Perc }
 
 public class BackgroundMusicController : UnitySingleton<BackgroundMusicController>
 {
-    [Header("Game Background MusicFiles")]
+    [Header("Game Background MusicController")]
     public AudioSource Bass_Music;
     public AudioSource Flute_Music;
     public AudioSource Harp_Music;
     public AudioSource Perc_Music;
 
-    [Header("PickUp SoundFiles")]
+    [Header("Menu Background MusicController")]
+    public AudioSource Menu_Music;
+
+    [Header("PickUp MusicController")]
     public AudioSource Bass_PickUp;
     public AudioSource Flute_PickUp;
     public AudioSource Harp_PickUp;
@@ -20,13 +23,12 @@ public class BackgroundMusicController : UnitySingleton<BackgroundMusicControlle
     public AudioSource God_PickUp;
     public List<AudioClip> GodPickUpSounds;
 
-    [Header("WaveBox SoundFiles")]
+    [Header("WaveBox")]
     public AudioSource WaveBoxJump_Sound;
     public List<AudioClip> Bass_WaveBoxSounds;
     public List<AudioClip> Flute_WaveBoxSounds;
     public List<AudioClip> Harp_WaveBoxSounds;
     public List<AudioClip> Perc_WaveBoxSounds;
-
 
     private GameStateController gameStateController;
 
@@ -38,42 +40,29 @@ public class BackgroundMusicController : UnitySingleton<BackgroundMusicControlle
         gameStateController.OnPausedStateChanged += OnPauseStateChanged;
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Keypad0))
-        {
-            StartPickUpSound(InstromentType.Bass);
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad1))
-        {
-            StartPickUpSound(InstromentType.Flute);
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad2))
-        {
-            StartPickUpSound(InstromentType.Harp);
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad3))
-        {
-            StartPickUpSound(InstromentType.Perc);
-        }
-    }
-
     private void OnPauseStateChanged(PausedStates activPausedState)
     {
         if (activPausedState == PausedStates.Paused)
-        {
             PauseEnable(true);
-        }
         else
             PauseEnable(false);
     }
 
     void Start()
     {
-        StartAllGameBackgroundFiles();
+        PlayMenuBackgroundMusic();
     }
 
-    public void StartAllGameBackgroundFiles()
+    public void PlayMenuBackgroundMusic()
+    {
+        Menu_Music.Play();
+    }
+    public void StopMenuBackgroundMusic()
+    {
+        Menu_Music.Stop();
+    }
+
+    public void PlayAllGameBackgroundFiles()
     {
         Bass_Music.Play();
         Flute_Music.Play();
@@ -89,7 +78,7 @@ public class BackgroundMusicController : UnitySingleton<BackgroundMusicControlle
         GodPickUpSounds.Remove(GodPickUpSounds[i]);
     }
 
-    public void StartPickUpSound(InstromentType instromentType)
+    public void PlayPickUpSound(InstromentType instromentType)
     {
        StartCoroutine( PlayPickUp(instromentType));
     }
@@ -118,10 +107,10 @@ public class BackgroundMusicController : UnitySingleton<BackgroundMusicControlle
                 break;
         }
 
-        StartInstroment(instromentType);
+        PlayInstroment(instromentType);
     }
 
-    public void StartInstroment(InstromentType instromentType)
+    public void PlayInstroment(InstromentType instromentType)
     {
         switch (instromentType)
         {
@@ -174,17 +163,39 @@ public class BackgroundMusicController : UnitySingleton<BackgroundMusicControlle
     {
         if (enable)
         {
+            Menu_Music.Pause();
+
             Bass_Music.Pause();
             Flute_Music.Pause();
             Harp_Music.Pause();
             Perc_Music.Pause();
+
+            Bass_PickUp.Pause();
+            Flute_PickUp.Pause();
+            Harp_PickUp.Pause();
+            Perc_PickUp.Pause();
+
+            God_PickUp.Pause();
+
+            WaveBoxJump_Sound.Pause();
         }
         else
         {
+            Menu_Music.UnPause();
+
             Bass_Music.UnPause();
             Flute_Music.UnPause();
             Harp_Music.UnPause();
             Perc_Music.UnPause();
+
+            Bass_PickUp.UnPause();
+            Flute_PickUp.UnPause();
+            Harp_PickUp.UnPause();
+            Perc_PickUp.UnPause();
+
+            God_PickUp.UnPause();
+
+            WaveBoxJump_Sound.UnPause();
         }
     }
 }
