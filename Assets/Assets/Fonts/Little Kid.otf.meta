@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 756f8ace27e96444f81818cab2052cc5
+timeCreated: 1485064250
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Little Kid
+  fontNames:
+  - Little Kid
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

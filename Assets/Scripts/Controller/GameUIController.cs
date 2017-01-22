@@ -12,6 +12,11 @@ public class GameUIController : UnitySingleton<GameUIController>
     [SerializeField]
     private float fadeSpeed;
 
+    void Start()
+    {
+        Countdown.Instance.StartCountdown(300);
+    }
+
     public void Fade()
     {
         StartCoroutine(FadeProgress());

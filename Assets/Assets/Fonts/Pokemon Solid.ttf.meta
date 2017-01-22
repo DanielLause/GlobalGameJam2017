@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 7562f26bb7eeb574fbf1e5c3b8b602e5
+timeCreated: 1485064240
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Pokemon Solid
+  fontNames:
+  - Pokemon Solid
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
