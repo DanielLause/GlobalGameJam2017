@@ -13,6 +13,7 @@ public class Countdown : UnitySingleton<Countdown>
     public Text CountdownText;
 
     public bool IsActive { get; set; }
+    public bool IsExpired { get; private set; }
 
     private int seconds;
     private Coroutine timer;
@@ -41,6 +42,7 @@ public class Countdown : UnitySingleton<Countdown>
         this.seconds = seconds;
         CountdownText.text = string.Format("{0}:{1:00}", seconds / 60, seconds % 60);
         timer = StartCoroutine(Timer());
+        IsExpired = false;
     }
 
     public void PauseCountdown()
@@ -60,10 +62,15 @@ public class Countdown : UnitySingleton<Countdown>
         yield return new WaitForSeconds(1);
         seconds--;
         CountdownText.text = string.Format("{0}:{1:00}", seconds / 60, seconds % 60);
-        if (seconds == 0)
+        if (seconds <= 0)
         {
             if (OnCountDownExpired != null)
                 OnCountDownExpired();
+
+            IsExpired = true;
+            IsActive = false;
+            CountdownText.text = "";
+            StopAllCoroutines();
         }
         else
             timer = StartCoroutine(Timer());

@@ -66,11 +66,13 @@ public class SceneController : UnitySingleton<SceneController>
     {
         string scene = sceneCollection.GetFirtSceneNameWithType(sceneType);
         SceneManager.LoadScene(scene);
-        activeSceneType = sceneCollection.GetSceneType(scene);
         activeScene = SceneManager.GetSceneByName( scene);
+        activeSceneType = sceneCollection.GetSceneType(scene);
 
         if (OnSceneChanged != null)
             OnSceneChanged(activeSceneType);
+
+
     }
 
     public Scene GetActiveScene()

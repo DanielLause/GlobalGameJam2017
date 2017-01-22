@@ -118,6 +118,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1693079129140144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224898468490112278}
+  - component: {fileID: 222208245316515644}
+  - component: {fileID: 114953082522212410}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1700090337647698
 GameObject:
   m_ObjectHideFlags: 1
@@ -562,8 +579,35 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "\nAudio:\n\nManic-Studio.de\nDrums & Produktion: Borris Manych\r\nSecond
     Soundengineer: Julian Schmauch\r\nOrchestra: Benedict Goebel\r\nGuitars: Siamak
-    Sattari\r\nDark Voice: Eric Burrington (optional)\r\nThinktank: Kristian Rother\r\n\r\nSounddesign:
+    Sattari\r\nDark Voice: Eric Purrington\nThinktank: Kristian Rother\r\n\r\nSounddesign:
     Moritz Monorfalvi"
+--- !u!114 &114953082522212410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1693079129140144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: fe6672865557c6c4a85c13ad5414398c, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!114 &114963352100501752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -623,6 +667,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1356238286816452}
+--- !u!222 &222208245316515644
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1693079129140144}
 --- !u!222 &222316527540454522
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -702,7 +752,7 @@ RectTransform:
   m_Children:
   - {fileID: 224215220307150444}
   m_Father: {fileID: 224929336150541378}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.69725925}
   m_AnchorMax: {x: 1, y: 1}
@@ -784,6 +834,24 @@ RectTransform:
   m_AnchoredPosition: {x: 1.199997, y: 4.300003}
   m_SizeDelta: {x: -60, y: -44.4}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224898468490112278
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1693079129140144}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224929336150541378}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.78351855}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 394.00012, y: 0.00012207031}
+  m_SizeDelta: {x: 393, y: 1}
+  m_Pivot: {x: 1, y: 1}
 --- !u!224 &224902472492401470
 RectTransform:
   m_ObjectHideFlags: 1
@@ -812,9 +880,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 224274496473323740}
+  - {fileID: 224898468490112278}
   - {fileID: 224771553414208080}
   - {fileID: 224554697089536860}
+  - {fileID: 224274496473323740}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

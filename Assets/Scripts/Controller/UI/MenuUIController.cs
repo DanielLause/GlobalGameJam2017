@@ -18,6 +18,12 @@ public class MenuUIController : UnitySingleton<MenuUIController> {
         canvasGroup = GetComponent<CanvasGroup>();
     }
 
+    void Start()
+    {
+        if (Countdown.Instance.IsExpired)
+            OnClickCreditsButton();
+    }
+
     public void OnClickStartGameButton()
     {
         BackgroundMusicController.Instance.StopMenuBackgroundMusic();

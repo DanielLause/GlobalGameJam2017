@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DontDestroyOnLoad : MonoBehaviour {
+public class DontDestroyOnLoad : MonoBehaviour
+{
 
-	void Awake ()
+    void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);	
-	}
+        if (!GameStateController.Instance.isOnDestroy)
+        {
+            DontDestroyOnLoad(this.gameObject);
+            GameStateController.Instance.isOnDestroy = true;
+        }
+    }
 }

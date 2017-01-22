@@ -15,13 +15,19 @@ public class GameUIController : UnitySingleton<GameUIController>
     void Start()
     {
         SceneController.Instance.OnSceneChanged += OnSceneChanged;
+        Countdown.Instance.OnCountDownExpired += OnCountdownExpired;
+    }
+
+    private void OnCountdownExpired()
+    {
+        SceneController.Instance.LoadScene(SceneType.Menu);
     }
 
     private void OnSceneChanged(SceneType e)
     {
         if (e== SceneType.Game)
         {
-            Countdown.Instance.StartCountdown(300);
+            Countdown.Instance.StartCountdown(10);
         }
     }
 

@@ -16,6 +16,8 @@ public class GameStateController : UnitySingleton<GameStateController>
     public PausedStates PausedState { get; private set; }
     public GameStates GameState { get; private set; }
 
+    public bool isOnDestroy = false;
+
 
     void Start()
     {
