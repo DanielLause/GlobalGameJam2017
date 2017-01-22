@@ -1,0 +1,152 @@
+fileFormatVersion: 2
+guid: 9ca0b569462a6094cb2f5b0fac427e65
+timeCreated: 1485039066
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: J_Arm_2_L1_1
+    100002: J_Arm_2_R1_1
+    100004: J_Arm_Tip_L1
+    100006: J_Arm_Tip_R1
+    100008: J_Head1
+    100010: J_Hip
+    100012: J_Leg_2_L1_1
+    100014: J_Leg_L1
+    100016: J_Leg_Tip_L1
+    100018: J_Neck1
+    100020: J_Pelvis_L1
+    100022: J_Pelvis_R1
+    100024: J_Reg_2_R1_1
+    100026: J_Reg_R1
+    100028: J_Reg_Tip_R1
+    100030: J_Spine1
+    100032: J_Spine_2_1
+    100034: joint11
+    100036: joint11 1
+    100038: joint13
+    100040: joint14
+    100042: joint14 1
+    100044: joint15
+    100046: joint15 1
+    100048: joint16
+    100050: joint16 1
+    100052: joint17
+    100054: joint17 1
+    100056: joint18
+    100058: joint18 1
+    100060: joint19
+    100062: joint19 1
+    100064: joint20
+    100066: joint20 1
+    100068: joint29
+    100070: pSphere4
+    100072: //RootNode
+    400000: J_Arm_2_L1_1
+    400002: J_Arm_2_R1_1
+    400004: J_Arm_Tip_L1
+    400006: J_Arm_Tip_R1
+    400008: J_Head1
+    400010: J_Hip
+    400012: J_Leg_2_L1_1
+    400014: J_Leg_L1
+    400016: J_Leg_Tip_L1
+    400018: J_Neck1
+    400020: J_Pelvis_L1
+    400022: J_Pelvis_R1
+    400024: J_Reg_2_R1_1
+    400026: J_Reg_R1
+    400028: J_Reg_Tip_R1
+    400030: J_Spine1
+    400032: J_Spine_2_1
+    400034: joint11
+    400036: joint11 1
+    400038: joint13
+    400040: joint14
+    400042: joint14 1
+    400044: joint15
+    400046: joint15 1
+    400048: joint16
+    400050: joint16 1
+    400052: joint17
+    400054: joint17 1
+    400056: joint18
+    400058: joint18 1
+    400060: joint19
+    400062: joint19 1
+    400064: joint20
+    400066: joint20 1
+    400068: joint29
+    400070: pSphere4
+    400072: //RootNode
+    4300000: pSphere4
+    9500000: //RootNode
+    13700000: pSphere4
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
