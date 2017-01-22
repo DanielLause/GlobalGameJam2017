@@ -127,7 +127,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1533796601165020}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.58, y: 1.14, z: 0}
+  m_LocalPosition: {x: -43.3, y: 2.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4481957527110206}
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1533796601165020}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb1e5dd0109b1cd4392a58d0f21fe4dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c2a8a71fc642d640b940912a2004feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectsToDeactivate: []
@@ -233,11 +233,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1360206552293884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceaa5adcfc6c6e146864bd72dc7aaca4, type: 3}
+  m_Script: {fileID: 11500000, guid: 3deb2b9d7c8911f4db36ad5509ce323b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RotateDirection: 5
-  RotationSpeed: 2
+  RotateDirection: 1
+  RotationSpeed: 4
   Paused: 0
 --- !u!114 &114452396114116476
 MonoBehaviour:
@@ -247,11 +247,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1019382257906040}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceaa5adcfc6c6e146864bd72dc7aaca4, type: 3}
+  m_Script: {fileID: 11500000, guid: 3deb2b9d7c8911f4db36ad5509ce323b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   RotateDirection: 1
-  RotationSpeed: 3
+  RotationSpeed: 2
   Paused: 0
 --- !u!198 &198243379349592308
 ParticleSystem:
